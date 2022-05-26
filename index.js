@@ -15,6 +15,7 @@ connectDB();
 //Routes
 app.get("/", (req, res) => res.send("Hello!"));
 app.use("/user", require("./routes/api/user"));
+app.use("/auth", require("./routes/api/auth"));
 
 const server = app.listen(PORT, () => {
   console.log(`Listening on: ${PORT}`);

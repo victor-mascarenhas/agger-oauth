@@ -1,5 +1,6 @@
 const express = require("express");
 const { check, validationResult } = require("express-validator");
+const auth = require("../../middlewares/auth");
 const router = express.Router();
 const User = require("../../models/user");
 const MSGS = require("../../messages");
@@ -8,7 +9,7 @@ const bcrypt = require("bcrypt");
 // @route    GET /user
 // @desc     LIST users
 // @access   Private
-router.get("/", async (req, res, next) => {
+router.get("/", auth, async (req, res, next) => {
   try {
     const user = await User.find({});
     res.json(user);
