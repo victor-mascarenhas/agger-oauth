@@ -83,7 +83,7 @@ router.post(
 router.delete("/:id", async (req, res, next) => {
   try {
     const id = req.params.id;
-    const user = await User.findOneAndDelete({ _id: id }).select("-password");
+    const user = await User.findOneAndDelete({ _id: id });
 
     if (user) {
       res.json({
