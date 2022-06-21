@@ -8,7 +8,6 @@ const axios = require("axios");
 const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
 const querystring = require("querystring");
-const auth = require("./middlewares/auth");
 
 //ENV
 const PORT = process.env.PORT || 4646;
@@ -90,7 +89,6 @@ app.get("/auth/google/url", (req, res) => {
 // Getting the user from Google with the code
 app.get(`/${redirectURI}`, async (req, res) => {
   const code = req.query.code;
-  console.log("init get user");
 
   const { id_token, access_token } = await getTokens({
     code,
@@ -121,21 +119,8 @@ app.get(`/${redirectURI}`, async (req, res) => {
   jwt.sign(payload, JWT_SECRET, { expiresIn: "5 days" }, (err, token) => {
     if (err) throw err;
     payload.token = token;
-    res.redirect(UI_ROOT_URI);
-    res.json(payload);
+    res.redirect(`${UI_ROOT_URI}?token=${token}`);
   });
-});
-
-// Getting the current user
-app.get("/auth/me", auth, (req, res) => {
-  try {
-    const user = req.user;
-    console.log("decoded", user);
-    return res.send(user);
-  } catch (err) {
-    console.log(err);
-    res.send(null);
-  }
 });
 
 app.get("/", (req, res) => res.send("Hello!"));

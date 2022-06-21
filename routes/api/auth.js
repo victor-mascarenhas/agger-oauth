@@ -5,7 +5,19 @@ const User = require("../../models/user");
 const jwt = require("jsonwebtoken");
 const config = require("config");
 const { check, validationResult } = require("express-validator");
+const auth = require("../../middlewares/auth");
 const MSGS = require("../../messages");
+
+// Getting the current user
+router.get("/me", auth, (req, res) => {
+  try {
+    const user = req.user;
+    return res.send(user);
+  } catch (err) {
+    console.log(err);
+    res.send(null);
+  }
+});
 
 router.post(
   "/",
