@@ -91,6 +91,7 @@ app.get("/auth/google/url", (req, res) => {
 // Getting the user from Google with the code
 app.get(`/${redirectURI}`, async (req, res) => {
   const code = req.query.code;
+  console.log("init get user");
 
   const { id_token, access_token } = await getTokens({
     code,
@@ -111,8 +112,8 @@ app.get(`/${redirectURI}`, async (req, res) => {
     )
     .then((res) => res.data)
     .catch((error) => {
+      console.log(error);
       console.error(`Failed to fetch user`);
-      throw new Error(error.message);
     });
 
   const token = jwt.sign(googleUser, JWT_SECRET);
