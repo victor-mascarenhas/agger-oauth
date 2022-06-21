@@ -20,7 +20,6 @@ const SERVER_ROOT_URI =
   process.env.SERVER_ROOT_URI || config.get("SERVER_ROOT_URI");
 const UI_ROOT_URI = process.env.UI_ROOT_URI || config.get("UI_ROOT_URI");
 const JWT_SECRET = process.env.jwtSecret || config.get("jwtSecret");
-const COOKIE_NAME = process.env.COOKIE_NAME || config.get("COOKIE_NAME");
 
 //Middlewares
 app.use(express.json());
@@ -116,14 +115,13 @@ app.get(`/${redirectURI}`, async (req, res) => {
       console.error(`Failed to fetch user`);
     });
 
-  const token = jwt.sign(googleUser, JWT_SECRET);
-
-  console.log(googleUser);
-
-  res.cookie(COOKIE_NAME, token, {
-    maxAge: 900000,
-    httpOnly: true,
-    secure: false,
+  const payload = {
+    user: googleUser,
+  };
+  jwt.sign(payload, JWT_SECRET, { expiresIn: "5 days" }, (err, token) => {
+    if (err) throw err;
+    payload.token = token;
+    res.json(payload);
   });
 
   res.redirect(UI_ROOT_URI);

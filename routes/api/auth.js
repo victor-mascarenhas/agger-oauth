@@ -20,7 +20,6 @@ router.post(
     }
     const { email, password } = req.body;
     const jwtSecret = process.env.jwtSecret || config.get("jwtSecret");
-    const COOKIE_NAME = process.env.COOKIE_NAME || config.get("COOKIE_NAME");
 
     try {
       let user = await User.findOne({ email }).select("id password email name");
@@ -34,9 +33,11 @@ router.post(
             .json({ errors: [{ msg: MSGS.PASSWORD_INVALID }] });
         } else {
           const payload = {
-            id: user.id,
-            name: user.name,
-            email: user.email,
+            user: {
+              id: user.id,
+              name: user.name,
+              email: user.email,
+            },
           };
           jwt.sign(
             payload,
@@ -44,11 +45,7 @@ router.post(
             { expiresIn: "5 days" },
             (err, token) => {
               if (err) throw err;
-              res.cookie(COOKIE_NAME, token, {
-                maxAge: 900000,
-                httpOnly: true,
-                secure: false,
-              });
+              payload.token = token;
               res.json(payload);
             }
           );
