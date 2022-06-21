@@ -121,10 +121,9 @@ app.get(`/${redirectURI}`, async (req, res) => {
   jwt.sign(payload, JWT_SECRET, { expiresIn: "5 days" }, (err, token) => {
     if (err) throw err;
     payload.token = token;
+    res.redirect(UI_ROOT_URI);
     res.json(payload);
   });
-
-  res.redirect(UI_ROOT_URI);
 });
 
 // Getting the current user
