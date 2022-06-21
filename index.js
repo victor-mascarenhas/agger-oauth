@@ -118,6 +118,8 @@ app.get(`/${redirectURI}`, async (req, res) => {
 
   const token = jwt.sign(googleUser, JWT_SECRET);
 
+  console.log(googleUser);
+
   res.cookie(COOKIE_NAME, token, {
     maxAge: 900000,
     httpOnly: true,
