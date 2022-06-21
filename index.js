@@ -78,8 +78,8 @@ function getTokens({ code, clientId, clientSecret, redirectUri }) {
     })
     .then((res) => res.data)
     .catch((error) => {
+      console.log(error);
       console.error(`Failed to fetch auth tokens`);
-      throw new Error(error.message);
     });
 }
 
