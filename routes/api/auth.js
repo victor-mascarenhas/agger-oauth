@@ -20,6 +20,7 @@ router.post(
     }
     const { email, password } = req.body;
     const jwtSecret = process.env.jwtSecret || config.get("jwtSecret");
+    const COOKIE_NAME = process.env.COOKIE_NAME || config.get("COOKIE_NAME");
 
     try {
       let user = await User.findOne({ email }).select("id password email name");
