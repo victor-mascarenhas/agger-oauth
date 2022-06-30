@@ -20,15 +20,7 @@ const planSchema = new Schema({
   },
   packageItens: [],
   licenceQuantity: [String],
-  price: [
-    {
-      type: String,
-      htmlTag: String,
-      key: String,
-      text: String,
-      style: { type: Object },
-    },
-  ],
+  prices: [],
   buyButton: {
     type: { type: String },
     htmlTag: { type: String },
