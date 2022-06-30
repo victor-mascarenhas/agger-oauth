@@ -13,6 +13,13 @@ const aboutUsNumberSchema = new Schema({
     text: { type: String },
     style: { type: Object },
   },
+  text: {
+    type: { type: String },
+    htmlTag: { type: String },
+    key: { type: String },
+    text: { type: String },
+    style: { type: Object },
+  },
 });
 
 module.exports = mongoose.model("aboutUsNumber", aboutUsNumberSchema, "about");
