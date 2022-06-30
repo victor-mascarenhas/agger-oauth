@@ -18,15 +18,7 @@ const planSchema = new Schema({
     text: { type: String },
     style: { type: Object },
   },
-  packageItens: [
-    {
-      type: String,
-      htmlTag: String,
-      key: String,
-      text: String,
-      style: { type: Object },
-    },
-  ],
+  packageItens: [],
   licenceQuantity: [String],
   price: [
     {
