@@ -2,21 +2,17 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const aboutUsNumberSchema = new Schema({
-  arrayPos: {type: Number},
-  key: { type: String, required: true},
-  type: { type: String, required: true },
+  arrayPos: { type: Number },
+  key: { type: String },
+  type: { type: String },
 
   number: {
-    type: { type: String, required: true },
-    htmlTag: { type: String, required: true},
-    key: { type: String, required: true},
-    text: { type: String, required: true},
-    style: { 
-      color: String,
-      fontSize: String,
-      fontFamily: String
-    },
+    type: { type: String },
+    htmlTag: { type: String },
+    key: { type: String },
+    text: { type: String },
+    style: { type: Object },
   },
 });
 
-module.exports = mongoose.model("aboutUsNumber", aboutUsNumberSchema, 'about');
+module.exports = mongoose.model("aboutUsNumber", aboutUsNumberSchema, "about");

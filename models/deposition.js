@@ -2,43 +2,31 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const depositionSchema = new Schema({
-  arrayPos: {type: Number},
-  key: { type: String, required: true},
-  type: { type: String, required: true },
+  arrayPos: { type: Number },
+  key: { type: String },
+  type: { type: String },
 
   name: {
-    type: { type: String, required: true },
-    htmlTag: { type: String, required: true},
-    key: { type: String, required: true},
-    text: { type: String, required: true},
-    style: { 
-      color: String,
-      fontSize: String,
-      fontFamily: String
-    },
+    type: { type: String },
+    htmlTag: { type: String },
+    key: { type: String },
+    text: { type: String },
+    style: { type: Object },
   },
   profession: {
-    type: { type: String, required: true },
-    htmlTag: { type: String, required: true},
-    key: { type: String, required: true},
-    text: { type: String, required: true},
-    style: { 
-      color: String,
-      fontSize: String,
-      fontFamily: String
-    },
+    type: { type: String },
+    htmlTag: { type: String },
+    key: { type: String },
+    text: { type: String },
+    style: { type: Object },
   },
   deposition: {
-    type: { type: String, required: true },
-    htmlTag: { type: String, required: true},
-    key: { type: String, required: true},
-    text: { type: String, required: true},
-    style: { 
-      color: String,
-      fontSize: String,
-      fontFamily: String
-    },
-  }
+    type: { type: String },
+    htmlTag: { type: String },
+    key: { type: String },
+    text: { type: String },
+    style: { type: Object },
+  },
 });
 
-module.exports = mongoose.model("deposition", depositionSchema, 'deposition');
+module.exports = mongoose.model("deposition", depositionSchema, "deposition");

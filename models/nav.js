@@ -3,12 +3,12 @@ const { Schema } = mongoose;
 
 const NavSchema = new Schema({
   arrayPos: Number,
-  type: { type: String, required: true },
-  htmlTag: { type: String, required: true },
-  key: { type: String, required: true },
-  href: { type: String, required: true },
-  text: { type: String, required: true },
-  style: {},
+  type: { type: String },
+  htmlTag: { type: String },
+  key: { type: String },
+  href: { type: String },
+  text: { type: String },
+  style: { type: Object },
 });
 
 module.exports = mongoose.model("nav", NavSchema);

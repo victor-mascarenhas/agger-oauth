@@ -2,66 +2,48 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const planSchema = new Schema({
-  arrayPos: {type: Number},
-  type: { type: String, required: true },
+  arrayPos: { type: Number },
+  type: { type: String },
   title: {
-    type: { type: String, required: true },
-    htmlTag: { type: String, required: true}, 
-    key: { type: String, required: true}, 
-    text: { type: String, required: true},
-    style: { 
-      color: String,
-      fontSize: String,
-      fontFamily: String
-    },
+    type: { type: String },
+    htmlTag: { type: String },
+    key: { type: String },
+    text: { type: String },
+    style: { type: Object },
   },
   description: {
-    type: { type: String, required: true },
-    htmlTag: { type: String, required: true}, 
-    key: { type: String, required: true}, 
-    text: { type: String, required: true},
-    style: { 
-      color: String,
-      fontSize: String,
-      fontFamily: String
-    },
+    type: { type: String },
+    htmlTag: { type: String },
+    key: { type: String },
+    text: { type: String },
+    style: { type: Object },
   },
-  packageItens: [{
-    type: String,
-    htmlTag: String,
-    key: String,
-    text: String,
-    style: { 
-      color: String,
-      fontSize: String,
-      fontFamily: String
+  packageItens: [
+    {
+      type: String,
+      htmlTag: String,
+      key: String,
+      text: String,
+      style: { type: Object },
     },
-
-  }],
+  ],
   licenceQuantity: [String],
-  price:[{
-    type: String,
-    htmlTag: String,
-    key: String,
-    text: String,
-    style: { 
-      color: String,
-      fontSize: String,
-      fontFamily: String
+  price: [
+    {
+      type: String,
+      htmlTag: String,
+      key: String,
+      text: String,
+      style: { type: Object },
     },
-  }],
+  ],
   buyButton: {
-    type: { type: String, required: true },
-    htmlTag: { type: String, required: true}, 
-    key: { type: String, required: true}, 
-    text: { type: String, required: true},
-    style: { 
-      color: String,
-      fontSize: String,
-      fontFamily: String
-    },
-  }
-  
+    type: { type: String },
+    htmlTag: { type: String },
+    key: { type: String },
+    text: { type: String },
+    style: { type: Object },
+  },
 });
 
-module.exports = mongoose.model("plan", planSchema, 'plan');
+module.exports = mongoose.model("plan", planSchema, "plan");
