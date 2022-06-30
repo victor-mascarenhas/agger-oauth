@@ -10,7 +10,7 @@ const MSGS = require("../../messages");
 // @access   Public
 router.get("/", async (req, res, next) => {
   try {
-    const aboutItems = await AboutUsText.find({});
+    const aboutItems = await AboutUsNumber.find({});
     res.json(aboutItems);
   } catch (err) {
     console.error(err.message);
@@ -24,7 +24,7 @@ router.get("/", async (req, res, next) => {
 router.get("/:id", async (req, res, next) => {
   try {
     const id = req.params.id;
-    const aboutItems = await AboutUsText.findById(id);
+    const aboutItems = await AboutUsNumber.findById(id);
 
     if (aboutItems) {
       res.json(aboutItems);
