@@ -7,7 +7,7 @@ const MSGS = require("../../messages");
 // @route    GET /nav
 // @desc     LIST nav items
 // @access   Private
-router.get("/", auth, async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
     const navItems = await Nav.find({});
     res.json(navItems);

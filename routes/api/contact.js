@@ -7,7 +7,7 @@ const MSGS = require("../../messages");
 // @route    GET /contact
 // @desc     LIST contact items
 // @access   Private
-router.get("/", auth, async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
     const contatos = await Contact.find({});
     res.json(contatos);

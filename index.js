@@ -27,6 +27,7 @@ app.use("/deposition", require("./routes/api/deposition"));
 app.use("/solutions", require("./routes/api/solutions"));
 app.use("/functionality", require("./routes/api/functionality"));
 app.use("/plan", require("./routes/api/plan"));
+app.use("/all", require("./routes/api/all"));
 
 const server = app.listen(PORT, () => {
   console.log(`Listening on: ${PORT}`);
